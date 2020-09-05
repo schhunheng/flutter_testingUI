@@ -27,31 +27,20 @@ class _SearchBoxState extends State<SearchBox> {
           child: Container(
             child: TextField(
               controller: _seachProductByName,
+              onChanged: (value) {
+                productProvider.search(value);
+              },
+              onSubmitted: (value) {
+                 productProvider.search(value);
+              },
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "Find the book",
-                // icon: Icon(Icons.search,)
-                 prefix:  Container(
-                   
-                   child: IconButton(
-            icon: Icon(
-              Icons.search,
-              
-            ),
-            onPressed: () {
-             if(_seachProductByName.text==""){
-               productProvider.setSearchByName("zzz");
-             }else{
-
-              productProvider.setSearchByName(_seachProductByName.text);
-             }
-            }),
-                 )
+                icon: Icon(Icons.search),
               ),
             ),
           ),
         ),
-       
       ],
     );
   }
